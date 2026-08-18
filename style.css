@@ -19,6 +19,7 @@ body {
   color: #171717;
   background: #fff;
   line-height: 1.5;
+  width: 100%;
 }
 
 img {
@@ -74,7 +75,7 @@ a {
 .page-container {
   width: min(var(--container), calc(100% - 48px));
 
-  margin-inline: auto;
+  margin: 0 auto;
 }
 
 /* =========================================================
@@ -672,6 +673,15 @@ main section {
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
+
+/* Grid items default to their intrinsic minimum width. The product choices
+   contain fixed controls and product imagery, so allow their text column to
+   shrink instead of widening the order card on narrow screens. */
+.order-content > *,
+.customer-fields,
+.order-products {
+  min-width: 0;
+}
 .order-products {
   padding-right: 30px;
 
@@ -681,6 +691,8 @@ main section {
 .order-form h2 {
   color: var(--red);
   font-weight: 900;
+
+  max-width: 100%;
 
   font-size: 36px;
   text-align: center;
@@ -698,6 +710,8 @@ main section {
 
 .product-option {
   position: relative;
+
+  min-width: 0;
 
   min-height: 100px;
 
@@ -774,6 +788,7 @@ main section {
   flex-direction: column;
 
   flex: 1;
+  min-width: 0;
 }
 
 .product-option__info strong {
@@ -792,6 +807,12 @@ main section {
   color: #888;
 
   font-size: 12px;
+}
+
+.product-option__info strong,
+.product-option__info b,
+.product-option__info del {
+  overflow-wrap: anywhere;
 }
 
 .discount {
@@ -948,7 +969,7 @@ main section {
 @keyframes fromRight {
   from {
     opacity: 0;
-    transform: translateX(80px);
+    transform: translateY(24px);
   }
 
   to {
@@ -960,7 +981,7 @@ main section {
 @keyframes fromLeft {
   from {
     opacity: 0;
-    transform: translateX(-80px);
+    transform: translateY(24px);
   }
 
   to {
@@ -2141,5 +2162,8 @@ main section {
 
   main {
     padding-bottom: 100px;
+  }
+  .success-modal__content {
+    width: 290px;
   }
 }
